@@ -1,0 +1,58 @@
+[package]
+name = "nektome-client"
+version = "0.1.0"
+edition = "2024"
+description = "Rust client for the NektoMe anonymous chat service"
+license = "MIT"
+
+[dependencies]
+aes = "0.9"
+base64 = "0.23"
+bytes = "1.12"
+image = { version = "0.25.10", default-features = false, features = ["png", "jpeg", "gif", "webp"] }
+cpal = { version = "0.18", optional = true }
+ed25519-dalek = "3.0"
+eframe = "0.36"
+flacenc = { version = "0.5.1", default-features = false }
+futures-util = "0.3.34"
+rand = "0.10"
+cbc = "0.2"
+chrono = { version = "0.4.45", default-features = false, features = ["clock"] }
+md-5 = "0.11"
+reqwest = { version = "0.13", default-features = false, features = ["json", "native-tls", "socks"] }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.151"
+sha2 = "0.11"
+tokio = { version = "1.53", features = ["macros", "rt-multi-thread", "sync", "io-util", "io-std", "net", "process", "time"] }
+tokio-tungstenite = { version = "0.30", features = ["native-tls"] }
+url = "2.5.8"
+uuid = { version = "1.26", features = ["v4"] }
+webrtc = { version = "0.20", optional = true }
+rtc = { version = "0.20", optional = true }
+async-trait = { version = "0.1", optional = true }
+opus-pure = { version = "0.2.1", optional = true }
+nnnoiseless = "0.5.2"
+percent-encoding = "2.3.2"
+rusty_mp3 = "0.8"
+mkaudiolibrary = "2.1.0"
+ort = { version = "2.0.0-rc.13", optional = true }
+
+[dev-dependencies]
+claxon = "0.4.3"
+serde_json = "1.0.151"
+
+[features]
+default = ["webrtc-media", "opus-media", "voice-changer"]
+cpal-audio = ["dep:cpal"]
+webrtc-media = ["dep:webrtc", "dep:rtc", "dep:async-trait"]
+opus-media = ["dep:opus-pure", "webrtc-media"]
+voice-changer = ["dep:ort"]
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = "symbols"
+debug = false
+incremental = false

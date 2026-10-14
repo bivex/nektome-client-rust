@@ -1,0 +1,5 @@
+# Keep x86-64 artifacts compatible with the oldest CPUs supported by Rust's
+# target and operating-system baseline. In particular, do not specialize
+# release/LTO builds for the developer's CPU or require AVX-era extensions.
+[target.'cfg(target_arch = "x86_64")']
+rustflags = ["-C", "target-cpu=x86-64"]

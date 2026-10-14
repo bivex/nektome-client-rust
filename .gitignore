@@ -1,0 +1,30 @@
+# Rust build results
+target/
+
+# Editors
+.idea/
+.vscode/
+
+# OS generated
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Diagnostics
+*.crash
+nektome-source.zip
+Архів.zip
+models/base/RMVPE.onnx
+models/base/vec-768-layer-12.onnx
+models/voices/nyamura-ru.pth
+models/voices/woman_1.onnx
+models/voices/woman_2.onnx
+models/voices/woman_3.onnx
+models/voices/lana.onnx
+models/voices/sabrina.onnx
+models/base/vec-256-layer-9.onnx
+nektome-sources.zip
